@@ -1,5 +1,23 @@
 [requires]
-
+zmqcpp/4.1.1@memsharded/stable 
+Protobuf/2.6.1@memsharded/testing
 
 [generators]
 cmake
+
+[options]
+Protobuf:shared=False
+ZMQ:shared=False
+
+[imports]
+bin, protoc* -> ./
+bin, *.dylib -> ./
+bin, *.so* -> ./
+bin, *.dll -> ./
+lib, *.dylib -> ./
+lib, *.so* -> ./
+lib, *.dll -> ./
+
+# bin, *.dll -> ./bin
+# bin, *.dll -> ./bin
+# bin, *.dylib -> ./bin
