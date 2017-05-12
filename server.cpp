@@ -1,12 +1,19 @@
 // http://docs.conan.io/en/latest/examples/zmq_protobuf.html
 
-#include "zmq.hpp"
 #include <string>
 #include <iostream>
-#include "message.pb.h"
+
+#include <boost/regex.hpp>
+
 #include <google/protobuf/text_format.h>
 
+#include "zmq.hpp"
+#include "message.pb.h"
+
 int main () {
+    boost::regex const e("(\\r\\n\\r\\n|\\n\\r\\n|\\r\\n\\n|\\n\\n)");
+
+
     zmq::context_t context (1); //  Prepare our context and socket
     zmq::socket_t socket(context, ZMQ_PAIR);
     socket.bind ("tcp://*:5555");
